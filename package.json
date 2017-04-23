@@ -1,0 +1,31 @@
+{
+  "name": "eloquent-javascript",
+  "version": "1.0.0",
+  "description": "Exercises for Eloquent Javascript",
+  "main": "index.js",
+  "dependencies": {
+    "jasmine": "^2.5.3",
+    "karma": "^1.6.0"
+  },
+  "devDependencies": {
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walshification/eloquent-javascript.git"
+  },
+  "keywords": [
+    "eloquent",
+    "javascript"
+  ],
+  "author": "Christopher Walsh <walshification@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walshification/eloquent-javascript/issues"
+  },
+  "homepage": "https://github.com/walshification/eloquent-javascript#readme"
+}
