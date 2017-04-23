@@ -12,7 +12,8 @@
     "karma-phantomjs-launcher": "^1.0.4"
   },
   "scripts": {
-    "test": "./node_modules/.bin/karma start"
+    "test": "./node_modules/.bin/karma start --single-run",
+    "test-watch": "./node_modules/.bin/karma start"
   },
   "repository": {
     "type": "git",
