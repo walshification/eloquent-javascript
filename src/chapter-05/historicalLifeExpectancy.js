@@ -40,17 +40,37 @@ ANCESTRY_FILE = [
   { name: "Jacobus Bernardus van Brussel", sex: "m", born: 1736, died: 1809, father: "Jan van Brussel", mother: "Elisabeth Haverbeke" }
 ];
 
-var byName = {};
-ANCESTRY_FILE.forEach(function(person) {
- byName[person.name] = person;
-});
-
 // console.log(averageAgePerCentury(ANCESTRY_FILE));
-//=> ???
+//=> {
+//   16: 43.5,
+//   17: 51.2,
+//   18: 52.78947368421053,
+//   19: 54.833333333333336,
+//   20: 84.66666666666667,
+//   21: 94
+// }
 
-function averageAgePerCentury(ancestors, registry) {}
+function averageAgePerCentury(ancestors) {
+  var groups = groupBy(ancestors);
+  return Object.keys(groups).reduce(function(average, century) {
+    average[century] = averageAge(groups[century]);
+    return average;
+  }, {});
+}
 
-function average(array) {
- function plus(a, b) { return a + b; }
- return array.reduce(plus) / array.length;
+function groupBy(ancestors) {
+  return ancestors.reduce(function(groups, ancestor) {
+    if(groups[Math.ceil(ancestor.died / 100)] === undefined) {
+      groups[Math.ceil(ancestor.died / 100)] = [];
+    };
+    groups[Math.ceil(ancestor.died / 100)].push(ancestor);
+    return groups;
+  }, {});
+}
+
+function averageAge(ancestors) {
+  function plus(a, b) { return a + b }
+  return ancestors.map(function(ancestor) {
+    return ancestor.died - ancestor.born;
+  }).reduce(plus) / ancestors.length;
 }
